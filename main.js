@@ -157,10 +157,8 @@ $("document").ready(function () {
             }
 
         });
+        
 
-        var fightButton = document.createElement("button");
-        button.innerHTML = "Do Something";
-        $(".label").append("fightButton");
 
 
 
@@ -217,4 +215,4 @@ $("document").ready(function () {
 
     }
 
-});
+);
