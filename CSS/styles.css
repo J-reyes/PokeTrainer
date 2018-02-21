@@ -1,0 +1,48 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#header-container {
+    background-color: #004e66;
+    height: 20vh;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    font-size: 5em;
+}
+
+.content-container {
+    height: 90vh;
+    margin: 5% 10%;
+}
+
+.availablePokemon {
+    border: 1px solid black;
+    height: 200px;
+}
+
+.pokeCard {
+    margin: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1%;
+    margin-top: 25px;
+    background-color: #ededed
+}
+
+.name {
+    display: inline;
+}
+
+.poke-name {
+    font-weight: 800;
+    font-size: 1.5em;
+}
+
+.poke-content {
+    margin: auto auto;
+}
