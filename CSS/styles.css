@@ -3,8 +3,58 @@
     margin: 0;
     box-sizing: border-box;
 }
+.content-container {
+    /* height: 30vh; */
+    margin: 1% 10%;
+}
 
-#header-container {
+.availablePokemon {
+    border: 1px solid black;
+    height: 100px;
+    text-align: center;
+}
+#mySelection {
+    margin: 1% 10%;
+    
+}
+#opponent1 {
+    margin: 1% 10%;
+}
+#opponent2 {
+    margin: 1% 10%;
+}
+.jumbotron {
+    background-color: salmon;
+  
+    color: beige;
+}
+.pokeCard {
+    margin: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1%;
+    margin-top: 25px;
+    background-color: #ededed;
+    text-align: center;
+    
+
+
+}
+
+.name {
+    display: inline;
+}
+
+.poke-name {
+    font-weight: 800;
+    font-size: 1.5em;
+}
+
+.poke-content {
+    margin: auto auto;
+}
+
+/* #header-container {
     background-color: #004e66;
     height: 20vh;
 }
@@ -45,4 +95,4 @@ h1 {
 
 .poke-content {
     margin: auto auto;
-}
+} */

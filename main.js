@@ -125,6 +125,58 @@ $("document").ready(function () {
 
 
         };
+       
+        $('.pokeCard').mouseenter(
+            function () {
+                var $this = $(this);
+                $this.data('bgcolor', $this.css('background-color')).css('background-color', 'blue');
+            }
+        );
+
+
+
+        $(".pokeCard").mouseleave(function () {
+            if ($(this).hasClass("alive")) {
+                $(this).css("background-color", "green")
+                console.log("alive is active");
+            }
+            else {
+                $(this).css("background-color", "white").css("border", "1px solid black");
+            }
+        })
+
+        $(".pokeCard").click(highlighter);
+
+        var pokeCounter = 0;
+
+        function highlighter() {
+            pokeCounter++;
+            if (pokeCounter <= 3) {
+                if ($(this).hasClass("alive")) {
+                    $(this).removeClass("alive");
+                } else {
+                    pokeCounter -= 3;
+                    $(this).css("background-color", "green").addClass("alive");
+                }
+
+                console.log("click", this);
+            }
+
+
+
+        }
+
+        $('.pokeCard').click(function () {
+            if ($(this) )
+            var $target = $(this);
+        
+            $('#mySelection').append($(this));
+        })
+
+
+
+
+
     }
 
 
