@@ -3,6 +3,9 @@
     margin: 0;
     box-sizing: border-box;
 }
+body {
+    background-color: lightblue;
+}
 .content-container {
     /* height: 30vh; */
     margin: 1% 10%;
@@ -25,8 +28,8 @@
 }
 .jumbotron {
     background-color: salmon;
-  
-    color: beige;
+    
+    color: #FBFFB9;
 }
 .pokeCard {
     margin: 15px;
