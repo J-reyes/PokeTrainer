@@ -47,31 +47,31 @@ $("document").ready(function () {
             url: url,
             method: "GET"
         })
-        .done(function (response) {
-            // console.log(response);
-            // console.log(response.id);
-            // console.log(response.base_experience);
-            // console.log(response.weight)
-            var pokePower = Math.floor((2 * response.base_experience + response.weight) / response.height)
-            // console.log(pokePower);
-            var pokemonHP = pokePower * 3;
-            // console.log(response.name, pokemonHP);
-            var pokemonID = response.id;    // id used for calling picture
+            .done(function (response) {
+                // console.log(response);
+                // console.log(response.id);
+                // console.log(response.base_experience);
+                // console.log(response.weight)
+                var pokePower = Math.floor((2 * response.base_experience + response.weight) / response.height)
+                // console.log(pokePower);
+                var pokemonHP = pokePower * 3;
+                // console.log(response.name, pokemonHP);
+                var pokemonID = response.id;    // id used for calling picture
 
-            var pokePowerLabel = '<h5 id=pokePower' + response.id + ' class=power-label>Power: </h5>';
-            var pokemonHPLabel = '<h5 id=hp' + response.id + ' class=power-label>HP: </h5>';
-            var pokeImage = '<img src=https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + pokemonID + '.png class="poke-image">';
+                var pokePowerLabel = '<h5 id=pokePower' + response.id + ' class=power-label>Power: </h5>';
+                var pokemonHPLabel = '<h5 id=hp' + response.id + ' class=power-label>HP: </h5>';
+                var pokeImage = '<img src=https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + pokemonID + '.png class="poke-image">';
 
 
-            
-            $('#'+ response.name).parent().append(pokePowerLabel); //adding powerlabel to pokeCard via id
-            $('#'+ response.name).parent().append(pokemonHPLabel); //adding powerlabel to pokeCard via id
-            $('#'+ response.name).parent().append(pokeImage);   //appending image 
 
-            $('#pokePower' + response.id).append(pokePower);
-            $('#hp' + response.id).append(pokemonHP);
-            
-        });
+                $('#' + response.name).parent().append(pokePowerLabel); //adding powerlabel to pokeCard via id
+                $('#' + response.name).parent().append(pokemonHPLabel); //adding powerlabel to pokeCard via id
+                $('#' + response.name).parent().append(pokeImage);   //appending image 
+
+                $('#pokePower' + response.id).append(pokePower);
+                $('#hp' + response.id).append(pokemonHP);
+
+            });
     }
 
 
@@ -87,10 +87,10 @@ $("document").ready(function () {
             var pokeNameContent = 'div id=name' + i + '></div>';
             var nameHeader = '<h5 class="name"> Name: </h5>';
 
-            var currentNo = randomNumber(_pokemonArray.length-1)
+            var currentNo = randomNumber(_pokemonArray.length - 1)
             // var pokemonOnPage = [];
-            
-            
+
+
             // var pokemonID = currentNo + 1
 
             var currentPokemon = _pokemonArray.splice(currentNo, 1)[0];
@@ -99,9 +99,9 @@ $("document").ready(function () {
             console.log(currentPokemon);
 
 
-            
-            
-            
+
+
+
 
 
 
@@ -121,15 +121,15 @@ $("document").ready(function () {
             $('#pokeCard' + i).addClass('pokeCard').addClass('col-md-3');
 
             pokemonDetail(currentPokemon.url);
-            
+
 
 
         };
-       
+
         $('.pokeCard').mouseenter(
             function () {
                 var $this = $(this);
-                $this.data('bgcolor', $this.css('background-color')).css('background-color', 'blue');
+                $this.data('bgcolor', $this.css('background-color', '#EE7785'));
             }
         );
 
@@ -165,15 +165,24 @@ $("document").ready(function () {
 
 
         }
-
+        var trainerPokemon = 0;
         $('.pokeCard').click(function () {
-            if ($(this) )
-            var $target = $(this);
-        
-            $('#mySelection').append($(this));
-        })
+            trainerPokemon++
+            if (trainerPokemon <= 3) {
+                $('#mySelection').append($(this));
 
+            } else if (trainerPokemon > 6) {
+                console.log(155);
+                $('#opponent1').append($(this));
+            } else if (trainerPokemon <= 9) {
+                $("#opponent2").append($(this));
+            }
 
+        });
+
+        // var fightButton = document.createElement("button");
+        // button.innerHTML = "Do Something";
+        // $("#h2-container").append("fightButton");
 
 
 
