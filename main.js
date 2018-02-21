@@ -180,9 +180,9 @@ $("document").ready(function () {
 
         });
 
-        // var fightButton = document.createElement("button");
-        // button.innerHTML = "Do Something";
-        // $("#h2-container").append("fightButton");
+        var fightButton = document.createElement("button");
+        button.innerHTML = "Do Something";
+        $(".label").append("fightButton");
 
 
 
