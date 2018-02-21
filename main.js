@@ -27,21 +27,6 @@ $("document").ready(function () {
         });
 
 
-    // $.ajax({
-    //     url: _abilityUrl,
-    //     method: 'GET'
-    // })
-
-    // .done(function(response) {
-    //     console.log(response);
-    //     _abilityArray = response.name;
-    //     console.log(_abilityArray);
-    // })
-
-
-    // randomNumber151();
-    // console.log(randomNumber151());
-
     var pokemonDetail = function (url) {
         $.ajax({
             url: url,
@@ -88,15 +73,11 @@ $("document").ready(function () {
             var nameHeader = '<h5 class="name"> Name: </h5>';
 
             var currentNo = randomNumber(_pokemonArray.length - 1)
-            // var pokemonOnPage = [];
+         
 
 
-            // var pokemonID = currentNo + 1
 
             var currentPokemon = _pokemonArray.splice(currentNo, 1)[0];
-            // console.log(currentPokemon);
-
-            console.log(currentPokemon);
 
 
 
@@ -106,10 +87,7 @@ $("document").ready(function () {
 
 
             var pokeName = '<span id=' + currentPokemon.name + ' class="poke-name">' + currentPokemon.name + '</span>';
-            // var pokeImage = '<img src=https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + pokemonID + '.png class="poke-image">';
-
-            // $('.' + currentPokemon.name).css('display', 'inline');
-
+    
             $('.pokemonPicker').append(pokeCard);
             $('#pokeCard' + i).append(pokeContent);
             // $('#pokeCard' + i).append(pokeImage);
@@ -137,8 +115,8 @@ $("document").ready(function () {
 
         $(".pokeCard").mouseleave(function () {
             if ($(this).hasClass("alive")) {
-                $(this).css("background-color", "green")
-                console.log("alive is active");
+                $(this).css("background-color", "lightgreen")
+                // console.log("alive is active");
             }
             else {
                 $(this).css("background-color", "white").css("border", "1px solid black");
@@ -159,7 +137,7 @@ $("document").ready(function () {
                     $(this).css("background-color", "green").addClass("alive");
                 }
 
-                console.log("click", this);
+                // console.log("click", this);
             }
 
 
@@ -197,6 +175,30 @@ $("document").ready(function () {
 
 
 
+        $('.pokeCard').click(function () {
+
+            // console.log('inside click function');      
+            trainerPokemon++
+
+            if (trainerPokemon <= 3) {
+                // console.log('inside trainerPokemon <= 3');
+                $('#mySelection').append($(this));
+
+            } 
+
+            else if (trainerPokemon > 6) {
+                // console.log('inside trainerPokemon > 6');
+                $('#opponent1').append($(this));
+            } 
+
+            else if (trainerPokemon <= 9) {
+                // console.log('inside trainerPokemon <= 9');
+                $("#opponent2").append($(this));
+            }
+
+            if( trainerPokemon == 9 ) {
+                $('.pokeCard').off('click');
+            }
 
 
 
@@ -206,14 +208,13 @@ $("document").ready(function () {
 
 
 
+        });
 
 
+        // var fightButton = document.createElement("button");
+        // button.innerHTML = "Do Something";
+        // $("#h2-container").append("fightButton");
 
-
-
-
-
-
-
+    }
 
 });
