@@ -126,7 +126,6 @@ $("document").ready(function () {
         $(".pokeCard").click(highlighter);
 
         var pokeCounter = 0;
-
         function highlighter() {
             pokeCounter++;
             if (pokeCounter <= 3) {
@@ -139,81 +138,39 @@ $("document").ready(function () {
 
                 // console.log("click", this);
             }
-
-
-
         }
+
+        // var fightButton = document.createElement("button");
+        // button.innerHTML = "Do Something";
+        // $(".label").append("fightButton");
+
         var trainerPokemon = 0;
         $('.pokeCard').click(function () {
-            trainerPokemon++
-            if (trainerPokemon <= 3) {
-                $('#mySelection').append($(this));
 
-            } else if (trainerPokemon > 6) {
-                console.log(155);
-                $('#opponent1').append($(this));
-            } else if (trainerPokemon <= 9) {
-                $("#opponent2").append($(this));
-            }
-
-        });
-
-        var fightButton = document.createElement("button");
-        button.innerHTML = "Do Something";
-        $(".label").append("fightButton");
-
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-        $('.pokeCard').click(function () {
-
-            // console.log('inside click function');      
+            console.log('inside click function');      
             trainerPokemon++
 
             if (trainerPokemon <= 3) {
-                // console.log('inside trainerPokemon <= 3');
+                console.log('inside trainerPokemon <= 3');
                 $('#mySelection').append($(this));
 
             } 
 
             else if (trainerPokemon > 6) {
-                // console.log('inside trainerPokemon > 6');
+                console.log('inside trainerPokemon > 6');
                 $('#opponent1').append($(this));
             } 
 
             else if (trainerPokemon <= 9) {
-                // console.log('inside trainerPokemon <= 9');
+                console.log('inside trainerPokemon <= 9');
                 $("#opponent2").append($(this));
             }
 
-            if( trainerPokemon == 9 ) {
+            if( trainerPokemon >= 9 ) {
+                console.log('inside trainerPokemon >= 9');
                 $('.pokeCard').off('click');
             }
-
-
-
-
-
-
-
-
-
         });
-
-
-        // var fightButton = document.createElement("button");
-        // button.innerHTML = "Do Something";
-        // $("#h2-container").append("fightButton");
 
     }
 
