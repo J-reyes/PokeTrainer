@@ -107,46 +107,14 @@ $("document").ready(function () {
 
 
         $(".pokeCard").mouseleave(function () {
-            // if ($(this).hasClass("alive")) {
-            //     $(this).css("background-color", "lightgreen")
-            //     // console.log("alive is active");
-            // }
-            // else {
+           
             $(this).css("background-color", "white");
         }
         )
 
 
 
-        // var pokeCounter = 0;
-        // function highlighter() {
-        //     $(this).addClass('alive');
-        //     console.log($(this));
-        // }
-
-        // if ($('.pokeCard').hasClass('alive')) {
-        //     $(this).css("background-color", "lightgreen");
-        // }
-
-        // $(".pokeCard").click(highlighter);
-
-        // pokeCounter++;
-        // if (pokeCounter <= 3) {
-        //     if ($(this).hasClass("alive")) {
-        // $(this).removeClass("alive");
-        // } else {
-        //     pokeCounter -= 3;
-        // $(this).css("background-color", "green").addClass("alive");
-        // }
-
-        // console.log("click", this);
-        // }
-
-
-        // var fightButton = document.createElement("button");
-        // button.innerHTML = "Do Something";
-        // $(".label").append("fightButton");
-
+       
         var trainerPokemon = [];
         var opponent1Pokemon = [];
         var opponent2Pokemon = [];
@@ -195,7 +163,7 @@ $("document").ready(function () {
             }
             else {
                 $('#opponent1btn').click(function () {
-                    alert("Start PokeBattle! Select 1 pokemon from your roster and 1 pokemon from your opponent");
+                    alert("Start PokeBattle! Select 1 pokemon from your roster and 1 pokemon from your opponent").fadeIn( 100 ).delay( 1000 ).fadeOut( 200 );
                     console.log('fightBtnOn');
                     $('#mySelection').children().addClass('battleReady');
                     $('#opponent1').children().addClass('battleReady');
@@ -205,39 +173,5 @@ $("document").ready(function () {
         }
 
     }
-
-    // var fightButton = document.createElement("button");
-    // button.innerHTML = "Do Something";
-    // $(".label").append("fightButton");
-
-
-
-
-
-
-
-    // alert: choose 1 pokemon from trainer and 1 from opponent1
-
-
-
-    // click fight to have selected pokemon battle
-
-
-
-    // function calculates battle, hit by hit; subtract attack from HP, lower attack pokemon attacks first, returns winning pokemon and updates HP
-
-    // once pokemon HP < 1, fade our pokeCard and end battle
-
-    // alert: pokeName wins! select your pokemon and your opponent's pokemon and click battle
-
-
-
-
-
-
-
-
-
-
 
 });
