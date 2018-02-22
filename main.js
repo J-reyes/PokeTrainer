@@ -1,5 +1,7 @@
 $("document").ready(function () {
 
+    $('#opening')[0].play();
+
     var _queryUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=151'; //calling first 151 pokemon
     var _abilityUrl = 'https://pokeapi.co/api/v2/ability/1'
     var _pokemonArray;
@@ -77,15 +79,27 @@ $("document").ready(function () {
             $('#pokeCard' + i).addClass('pokeCard').addClass('col-md-3');
 
             pokemonDetail(currentPokemon.url);
+
         };
 
-        $('.pokeCard').mouseenter(
-            function () {
-                var $this = $(this);
-                $this.data('bgcolor', $this.css('background-color', '#EE7785'));
-            }
-        );
+    $('.pokeCard').mouseenter(
+        function () {
+            var $this = $(this);
+            $this.data('bgcolor', $this.css('background-color', '#EE7785'));
+        }
+    );
 
+
+
+    $(".pokeCard").mouseleave(function () {
+        // if ($(this).hasClass("alive")) {
+        //     $(this).css("background-color", "lightgreen")
+        //     // console.log("alive is active");
+        // }
+        // else {
+            $(this).css("background-color", "white");
+        }
+    )
 
         $(".pokeCard").mouseleave(function () {
             if ($(this).hasClass("alive")) {
@@ -96,50 +110,124 @@ $("document").ready(function () {
                 $(this).css("background-color", "white").css("border", "1px solid black");
             }
         })
+        
 
-        $(".pokeCard").click(highlighter);
+        // var pokeCounter = 0;
+    // function highlighter() {
+    //     $(this).addClass('alive');
+    //     console.log($(this));
+    // }
 
-        var pokeCounter = 0;
-        function highlighter() {
-            pokeCounter++;
-            if (pokeCounter <= 3) {
-                if ($(this).hasClass("alive")) {
-                    $(this).removeClass("alive");
-                } else {
-                    pokeCounter -= 3;
-                    $(this).css("background-color", "green").addClass("alive");
-                }
+    // if ($('.pokeCard').hasClass('alive')) {
+    //     $(this).css("background-color", "lightgreen");
+    // }
+
+    // $(".pokeCard").click(highlighter);
+
+            // pokeCounter++;
+            // if (pokeCounter <= 3) {
+            //     if ($(this).hasClass("alive")) {
+                    // $(this).removeClass("alive");
+                // } else {
+                //     pokeCounter -= 3;
+                    // $(this).css("background-color", "green").addClass("alive");
+                // }
 
                 // console.log("click", this);
-            }
+            // }
+        
+
+        // var fightButton = document.createElement("button");
+        // button.innerHTML = "Do Something";
+        // $(".label").append("fightButton");
+
+    var trainerPokemon = [];
+    var opponent1Pokemon = [];
+    var opponent2Pokemon = [];
+    var allPokemonCounter = [];
+    $('.pokeCard').click(function () {
+
+        // console.log('inside click function');      
+        
+
+        $(this).addClass('alive');
+
+
+        if ($('#Ash').children().length < 3) {
+            // console.log('inside trainerPokemon <= 3');
+            $('#Ash').append($(this));
+
+
+        } 
+
+        else if ($('#Brock').children().length < 3) {
+            // console.log('inside trainerPokemon > 6');
+            $('#Brock').append($(this));
+
+        } 
+
+        else if ($('#Misty').children().length < 3) {
+            // console.log('inside trainerPokemon <= 9');
+            $("#Misty").append($(this));
+
         }
 
-        var trainerPokemon = 0;
-        $('.pokeCard').click(function () {
+        else if ($('#pokedex').children().length < 1) {
+            // console.log('inside trainerPokemon >= 9');
+            $('.pokeCard').off('click');
+            
 
-            console.log('inside click function');
-            trainerPokemon++
+        }
 
-            if (trainerPokemon <= 3) {
-                console.log('inside trainerPokemon <= 3');
-                $('#Ash').append($(this));
+        fightButtonOn();
 
-            }
-
-            else if (trainerPokemon > 6) {
-                console.log('inside trainerPokemon > 6');
-                $('#Brock').append($(this));
-            }
-
-            else if (trainerPokemon <= 9) {
-                console.log('inside trainerPokemon <= 9');
-                $("#Misty").append($(this));
-            }
-
-            if (trainerPokemon >= 9) {
-                console.log('inside trainerPokemon >= 9');
-                $('.pokeCard').off('click');
-            }
+    });
+    function fightButtonOn() {
+        if ($('#pokedex').children().length > 0) {
+            $('#opponent1btn').off('click');
+            console.log('line191')
+        }
+        else {
+        $('#opponent1btn').click(function() {
+            alert("Start PokeBattle! Select 1 pokemon from your roster and 1 pokemon from your opponent");
+            console.log('fightBtnOn');
+            $('#Ash').children().addClass('battleReady');
+            $('#Brock').children().addClass('battleReady');
+            
         });
+        }
     }
+
+
+
+
+
+
+    }
+
+
+// alert: choose 1 pokemon from trainer and 1 from opponent1
+
+
+
+// click fight to have selected pokemon battle
+
+
+
+// function calculates battle, hit by hit; subtract attack from HP, lower attack pokemon attacks first, returns winning pokemon and updates HP
+
+// once pokemon HP < 1, fade our pokeCard and end battle
+
+// alert: pokeName wins! select your pokemon and your opponent's pokemon and click battle
+
+
+
+
+
+
+
+
+
+
+
 });
