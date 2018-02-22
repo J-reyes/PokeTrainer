@@ -56,6 +56,10 @@ body {
     background-color: lightgreen !important;
 }
 
+.battleActive {
+    background-color: pink !important;
+}
+
 .name {
     display: inline;
 }

@@ -118,34 +118,7 @@ $("document").ready(function () {
 
         
 
-        // var pokeCounter = 0;
-    // function highlighter() {
-    //     $(this).addClass('alive');
-    //     console.log($(this));
-    // }
 
-    // if ($('.pokeCard').hasClass('alive')) {
-    //     $(this).css("background-color", "lightgreen");
-    // }
-
-    // $(".pokeCard").click(highlighter);
-
-            // pokeCounter++;
-            // if (pokeCounter <= 3) {
-            //     if ($(this).hasClass("alive")) {
-                    // $(this).removeClass("alive");
-                // } else {
-                //     pokeCounter -= 3;
-                    // $(this).css("background-color", "green").addClass("alive");
-                // }
-
-                // console.log("click", this);
-            // }
-        
-
-        // var fightButton = document.createElement("button");
-        // button.innerHTML = "Do Something";
-        // $(".label").append("fightButton");
 
     var trainerPokemon = [];
     var opponent1Pokemon = [];
@@ -185,24 +158,91 @@ $("document").ready(function () {
 
         }
 
-        fightButtonOn();
+        battleButtonOn();
+        // battleReadyNow();
+        // setBattleReadyPokemon();
+
+        
 
     });
-    function fightButtonOn() {
+
+
+    function battleButtonOn() {
         if ($('#pokedex').children().length > 0) {
             $('#opponent1btn').off('click');
-            console.log('line191')
+            // console.log('line191')
         }
         else {
         $('#opponent1btn').click(function() {
             alert("Start PokeBattle! Select 1 pokemon from your roster and 1 pokemon from your opponent");
-            console.log('fightBtnOn');
+            // console.log('fightBtnOn');
             $('#mySelection').children().addClass('battleReady');
             $('#opponent1').children().addClass('battleReady');
             
+            
+        // setBattleReadyPokemon();
         });
         }
     }
+
+    // function setBattleReadyPokemon() {
+    //     var mySelectedChildren = $('#mySelection').children();
+    //     var opponent1Children =$('#opponent1').children();
+    //     var counter = 0;
+
+    //     while (counter < 2) {
+
+    //         for (var i = 0; i < $('#mySelection').children().length; i++) {
+             
+    //             if (mySelectedChildren[i].outerHTML.includes("battleActive") == false) {
+    //                 battleReadyNow();
+    //                 counter++;
+    //                 console.log(mySelectedChildren[i].outerHTML.includes("battleActive") )
+    //             }
+    //             else {
+    //                 battleReadyOff();
+    //                 counter--;
+    //                 console.log('244', mySelectedChildren[i].outerHTML.includes("battleActive") )
+    //             }
+    //         }
+            
+    //     }
+    
+    // }
+
+    // setBattleReadyPokemon();
+  
+    function battleReadyNow() {
+        
+        $('.battleReady').click(function() {
+            $(this).addClass('battleActive');
+        console.log('battleActive has fired');
+        })
+    }
+
+    function battleReadyOff() {
+        $('.pokeCard').children.removeClass('battleReady');
+        console.log(258);
+    }
+    
+
+
+    // function pokemonBattle() {
+    //     if ( $('.pokeCard').hasClass('battleReady') && this.clicked == true) {
+    //         console.log(this.clicked)
+    //         $('.pokeCard').click(activeBattle());
+    //         console.log('activeBattle working');
+    //         // $(this).addClass('battleActive');
+
+    //     }
+    //     else {
+    //         console.log('pokemonBattle not running');
+    //     }
+    // }
+
+    // var activeBattle = function() {
+    //     $('.pokeCard').addClass('battleActive');
+    // }
 
 
 
