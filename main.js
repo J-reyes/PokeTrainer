@@ -73,7 +73,7 @@ $("document").ready(function () {
             var nameHeader = '<h5 class="name"> Name: </h5>';
 
             var currentNo = randomNumber(_pokemonArray.length - 1)
-         
+
 
 
 
@@ -87,7 +87,7 @@ $("document").ready(function () {
 
 
             var pokeName = '<span id=' + currentPokemon.name + ' class="poke-name">' + currentPokemon.name + '</span>';
-    
+
             $('.pokemonPicker').append(pokeCard);
             $('#pokeCard' + i).append(pokeContent);
             // $('#pokeCard' + i).append(pokeImage);
@@ -115,101 +115,62 @@ $("document").ready(function () {
 
         $(".pokeCard").mouseleave(function () {
             if ($(this).hasClass("alive")) {
+                // $(this).removeClass("alive");
                 $(this).css("background-color", "lightgreen")
                 // console.log("alive is active");
             }
             else {
-                $(this).css("background-color", "white").css("border", "1px solid black");
+                $(this).css("background-color", "white");
             }
         })
 
         $(".pokeCard").click(highlighter);
 
         var pokeCounter = 0;
-
         function highlighter() {
             pokeCounter++;
-            if (pokeCounter <= 3) {
-                if ($(this).hasClass("alive")) {
-                    $(this).removeClass("alive");
-                } else {
-                    pokeCounter -= 3;
-                    $(this).css("background-color", "green").addClass("alive");
-                }
+            if (pokeCounter <= 9) {
 
-                // console.log("click", this);
+
+                $(this).css("background-color", "lightgreen").addClass("alive");
             }
 
-
+            // console.log("click", this);
 
         }
+
+        // var fightButton = document.createElement("button");
+        // button.innerHTML = "Do Something";
+        // $(".label").append("fightButton");
+
         var trainerPokemon = 0;
         $('.pokeCard').click(function () {
+
+            console.log('inside click function');
             trainerPokemon++
+
             if (trainerPokemon <= 3) {
+                console.log('inside trainerPokemon <= 3');
                 $('#mySelection').append($(this));
 
-            } else if (trainerPokemon > 6) {
-                console.log(155);
-                $('#opponent1').append($(this));
-            } else if (trainerPokemon <= 9) {
-                $("#opponent2").append($(this));
             }
-
-        });
-
-      
-
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-        $('.pokeCard').click(function () {
-
-            // console.log('inside click function');      
-            trainerPokemon++
-
-            if (trainerPokemon <= 3) {
-                // console.log('inside trainerPokemon <= 3');
-                $('#mySelection').append($(this));
-
-            } 
 
             else if (trainerPokemon > 6) {
-                // console.log('inside trainerPokemon > 6');
+                console.log('inside trainerPokemon > 6');
                 $('#opponent1').append($(this));
-            } 
+            }
 
             else if (trainerPokemon <= 9) {
-                // console.log('inside trainerPokemon <= 9');
+                console.log('inside trainerPokemon <= 9');
                 $("#opponent2").append($(this));
             }
 
-            if( trainerPokemon == 9 ) {
+            if (trainerPokemon >= 9) {
+                console.log('inside trainerPokemon >= 9');
                 $('.pokeCard').off('click');
             }
-
-
-
-
-
-
-
-
-
         });
 
-
-       
-
+    }
 
 });
