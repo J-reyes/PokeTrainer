@@ -26,7 +26,6 @@ $("document").ready(function () {
             // console.log(_pokemonArray);
         });
 
-
     var pokemonDetail = function (url) {
         $.ajax({
             url: url,
@@ -42,12 +41,9 @@ $("document").ready(function () {
                 var pokemonHP = pokePower * 3;
                 // console.log(response.name, pokemonHP);
                 var pokemonID = response.id;    // id used for calling picture
-
                 var pokePowerLabel = '<h5 id=pokePower' + response.id + ' class=power-label>Power: </h5>';
                 var pokemonHPLabel = '<h5 id=hp' + response.id + ' class=power-label>HP: </h5>';
                 var pokeImage = '<img src=https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + pokemonID + '.png class="poke-image">';
-
-
 
                 $('#' + response.name).parent().append(pokePowerLabel); //adding powerlabel to pokeCard via id
                 $('#' + response.name).parent().append(pokemonHPLabel); //adding powerlabel to pokeCard via id
@@ -59,35 +55,17 @@ $("document").ready(function () {
             });
     }
 
-
-
-
-
     function appendPokemonToPage(_pokemonArray) {
 
         for (var i = 0; i < 9; i++) {
             var pokeCard = '<div id=pokeCard' + i + '></div>';
             var pokeContent = '<div class=pokeContent' + i + '></div>';
-
             var pokeNameContent = 'div id=name' + i + '></div>';
             var nameHeader = '<h5 class="name"> Name: </h5>';
-
             var currentNo = randomNumber(_pokemonArray.length - 1)
-         
-
-
-
             var currentPokemon = _pokemonArray.splice(currentNo, 1)[0];
-
-
-
-
-
-
-
-
             var pokeName = '<span id=' + currentPokemon.name + ' class="poke-name">' + currentPokemon.name + '</span>';
-    
+
             $('.pokemonPicker').append(pokeCard);
             $('#pokeCard' + i).append(pokeContent);
             // $('#pokeCard' + i).append(pokeImage);
@@ -99,9 +77,6 @@ $("document").ready(function () {
             $('#pokeCard' + i).addClass('pokeCard').addClass('col-md-3');
 
             pokemonDetail(currentPokemon.url);
-
-
-
         };
 
         $('.pokeCard').mouseenter(
@@ -110,7 +85,6 @@ $("document").ready(function () {
                 $this.data('bgcolor', $this.css('background-color', '#EE7785'));
             }
         );
-
 
 
         $(".pokeCard").mouseleave(function () {
@@ -140,38 +114,32 @@ $("document").ready(function () {
             }
         }
 
-        // var fightButton = document.createElement("button");
-        // button.innerHTML = "Do Something";
-        // $(".label").append("fightButton");
-
         var trainerPokemon = 0;
         $('.pokeCard').click(function () {
 
-            console.log('inside click function');      
+            console.log('inside click function');
             trainerPokemon++
 
             if (trainerPokemon <= 3) {
                 console.log('inside trainerPokemon <= 3');
-                $('#mySelection').append($(this));
+                $('#Ash').append($(this));
 
-            } 
+            }
 
             else if (trainerPokemon > 6) {
                 console.log('inside trainerPokemon > 6');
-                $('#opponent1').append($(this));
-            } 
+                $('#Brock').append($(this));
+            }
 
             else if (trainerPokemon <= 9) {
                 console.log('inside trainerPokemon <= 9');
-                $("#opponent2").append($(this));
+                $("#Misty").append($(this));
             }
 
-            if( trainerPokemon >= 9 ) {
+            if (trainerPokemon >= 9) {
                 console.log('inside trainerPokemon >= 9');
                 $('.pokeCard').off('click');
             }
         });
-
     }
-
 });
