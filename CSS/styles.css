@@ -39,6 +39,8 @@ p {
     color: #FBFFB9;
 }
 
+
+
 .pokeCard {
     margin: 15px;
     border: 1px solid black;
@@ -52,6 +54,10 @@ p {
 
 }
 
+.alive {
+    background-color: lightgreen !important;
+}
+
 .name {
     display: inline;
 }
@@ -60,6 +66,8 @@ p {
     font-weight: 800;
     font-size: 1.5em;
 }
+
+
 
 .poke-content {
     margin: auto auto;
