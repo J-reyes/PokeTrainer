@@ -81,7 +81,7 @@ $("document").ready(function () {
 
         for (var i = 0; i < 9; i++) {
 
-            var currentNo = randomNumber(_pokemonArray.length - 1)
+            var currentNo = randomNumber(_pokemonArray.length)
             var currentPokemon = _pokemonArray.splice(currentNo, 1)[0];
 
             var pokeCard = '<div id=pokeCard' + i + ' data-id="' + currentPokemon.name + '"></div>';
@@ -380,8 +380,12 @@ function opponent1Remove() {
         alert('Opponent 1 defeated! Opponent 2 is waiting!')
         // console.log('removing opponent1 has run');
         battleBtnAppend2();
-    } else if ($('#mySelection').children().length < 1 && $('#opponent1').children().length > 0) {
+    } 
+    else if ($('#mySelection').children().length < 1 && $('#opponent1').children().length > 0) {
         alert('You have been defeated. You are not a PokeMaster');
+    } 
+    else if ($('#mySelection').children().length < 1 && $('#opponent1').children().length < 1) {
+        alert("It's a draw! You are still not a PokeMaster.")
     }
 }
 
@@ -393,8 +397,13 @@ function opponent2Remove() {
         $('#opponent2h2').remove();
         alert('Opponent 2 defeated! You are a PokeMaster!!')
         // console.log('removing opponent2 has run');
-    } else if ($('#mySelection').children().length < 1 && $('#opponent2').children().length > 0) {
+    } 
+    else if ($('#mySelection').children().length < 1 && $('#opponent2').children().length > 0) {
         alert('You have been defeated. You are not a PokeMaster.');
+    }    
+    else if ($('#mySelection').children().length < 1 && $('#opponent1').children().length < 1) {
+            alert("It's a draw! You are still not a PokeMaster.")
+    
     }
 }
 
