@@ -378,7 +378,7 @@ function opponent1Remove() {
         alert('Opponent 1 defeated! Opponent 2 is waiting!')
         // console.log('removing opponent1 has run');
         battleBtnAppend2();
-    } else if ($('#mySelection').children() < 1 && $('#opponent1').children().length > 0) {
+    } else if ($('#mySelection').children().length < 1 && $('#opponent1').children().length > 0) {
         alert('You have been defeated. You are not a PokeMaster');
     }
 }
@@ -391,7 +391,7 @@ function opponent2Remove() {
         $('#opponent2h2').remove();
         alert('Opponent 2 defeated! You are a PokeMaster!!')
         // console.log('removing opponent2 has run');
-    } else if ($('#mySelection').children() < 1 && $('#opponent2').children().length > 0) {
+    } else if ($('#mySelection').children().length < 1 && $('#opponent2').children().length > 0) {
         alert('You have been defeated. You are not a PokeMaster.');
     }
 }
