@@ -3,13 +3,15 @@ $("document").ready(function () {
     var _queryUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=151'; //calling first 151 pokemon
     var _abilityUrl = 'https://pokeapi.co/api/v2/ability/1'
     var _pokemonArray;
-    var _abilityArray;
-    var _pokeDict = {};
+       
+    var _pokeDict = {};     //object of objects that is built when pokemon info is pulled from api
 
-    var player0;
-    var opponentPokemon;
-    var opponent2Pokemon;
+    var player0;    //placeholder for active battling pokemon
+    var opponentPokemon;    //placeholder for opponent's active battle pokemon
+    var opponent2Pokemon; //placeholder for opponent's active battle pokemon
 
+
+    //random number generator
     function randomNumber(max) {
         return Math.floor(Math.random() * max);
 
@@ -50,6 +52,8 @@ $("document").ready(function () {
 
                 var pokePowerLabel = '<h5 id=pokePower' + response.id + ' class=power-label>Power: </h5>';
                 var pokemonHPLabel = '<h5 id=hp' + response.id + ' class=hp-label>HP: </h5>';
+
+                //pokemon image placeholder
                 var pokeImage = '<img src=https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + pokemonID + '.png class="poke-image">';
 
                 _pokeDict[response.name].id = response.id;
@@ -106,14 +110,13 @@ $("document").ready(function () {
 
         };
 
+        // hovering style over pokeCards
         $('.pokeCard').mouseenter(
             function () {
                 var $this = $(this);
                 $this.data('bgcolor', $this.css('background-color', '#EE7785'));
             }
         );
-
-
 
         $(".pokeCard").mouseleave(function () {
 
@@ -122,12 +125,7 @@ $("document").ready(function () {
         )
 
 
-
-
-        var trainerPokemon = [];
-        var opponent1Pokemon = [];
-        var opponent2Pokemon = [];
-        var allPokemonCounter = [];
+        // Pokemon selection function ////////
         $('.pokeCard').click(function () {
 
             // console.log('inside click function');      
@@ -173,8 +171,7 @@ $("document").ready(function () {
 
 
 
-
-
+    /////// fightBtn to attackBtn function ///////
     function fightButtonOn() {
         if ($('#pokedex').children().length > 0) {
             $('#opponent1AttackBtn').off('click');
@@ -197,7 +194,7 @@ $("document").ready(function () {
         }
     }
     
-
+    //// append battleBtn function //////
     function battleBtnAppend() {
         $('#opponent1AttackBtn').remove();
         
@@ -207,9 +204,9 @@ $("document").ready(function () {
         $('#opponent1h2').append(newAttackBtn);
         $('.btn-warning').addClass('btn');
         
-    
-
     }
+
+
     function battleBtnAppend2() {
         $('#opponent2AttackBtn').remove();
         
@@ -220,16 +217,11 @@ $("document").ready(function () {
         $('.btn-warning').addClass('btn');
 
         $('#opponent2').children().addClass('battleReady');
-        
-    
 
     }
 
  
-
-
-    
-
+    //// adding battleActive click event to select pokemon //////
     function battleReadyNow() {
 
         $('#mySelection > .battleReady').click(addBattleActive);
@@ -241,6 +233,7 @@ $("document").ready(function () {
         $('#opponent2 > .battleReady').click(addBattleActiveOpponent2);
     };
 
+    ///// adding battleActive class to select pokemon //////
     function addBattleActive() {
         $(this).addClass('battleActive');
 
@@ -282,10 +275,10 @@ $("document").ready(function () {
 
 
 
+/////// pokebattle function against opponent1 /////////
 function pokemonAttack() {
  
-
-    while (_pokeDict[player0].hp > 0 && _pokeDict[opponentPokemon].hp > 0) {
+    while (_pokeDict[player0].hp > 0 && _pokeDict[opponentPokemon].hp > 0) {            /// pokemon attack each other in turn
         _pokeDict[opponentPokemon].hp -= _pokeDict[player0].power;
         _pokeDict[player0].hp -= _pokeDict[opponentPokemon].power;
         // console.log(_pokeDict);
@@ -324,17 +317,16 @@ function pokemonAttack() {
 
         opponent1Remove();
 
-        battleReadyNow2();
-        
-        
+        battleReadyNow2();  
 
         
     }
 }
 
+/////// pokebattle function against opponent2 /////////
+
 function pokemonAttack2() {
  
-
     while (_pokeDict[player0].hp > 0 && _pokeDict[opponent2Pokemon].hp > 0) {
         _pokeDict[opponent2Pokemon].hp -= _pokeDict[player0].power;
         _pokeDict[player0].hp -= _pokeDict[opponent2Pokemon].power;
@@ -373,36 +365,45 @@ function pokemonAttack2() {
             }
 
         opponent2Remove();
-    
         
     }
 }
 
-    // opponent1Remove();
+////// removing opponent1 after defeat ////////////    
    
-    //if ()
-//$('#mySelection').children > 0 && 
 function opponent1Remove() {
     // console.log( $("#opponent1").children().length );
     if ($('#opponent1').children().length < 1) {
         $('#opponent1h2').remove();
         alert('Opponent 1 defeated! Opponent 2 is waiting!')
-        console.log('removing opponent1 has run');
+        // console.log('removing opponent1 has run');
         battleBtnAppend2();
     } else if ($('#mySelection').children() < 1 && $('#opponent1').children().length > 0) {
         alert('You have been defeated. You are not a PokeMaster');
     }
 }
+
+////// removing opponent2 after defeat ////////////    
+
 function opponent2Remove() {
     // console.log( $("#opponent1").children().length );
     if ($('#opponent2').children().length < 1) {
         $('#opponent2h2').remove();
         alert('Opponent 2 defeated! You are a PokeMaster!!')
-        console.log('removing opponent1 has run');
+        // console.log('removing opponent2 has run');
     } else if ($('#mySelection').children() < 1 && $('#opponent2').children().length > 0) {
         alert('You have been defeated. You are not a PokeMaster.');
     }
 }
+
+
+
+
+
+
+
+
+
 
 
 
